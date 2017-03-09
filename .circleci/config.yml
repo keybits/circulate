@@ -21,6 +21,7 @@ jobs:
           name: Install Dependencies
           command: pip install -r requirements/dev.txt
       - run:
+          # this can be removed
           name: Locate site Packages
           command: python -c "import site; print(site.getsitepackages())"
       - save_cache:
