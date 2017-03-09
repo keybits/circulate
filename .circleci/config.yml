@@ -21,6 +21,11 @@ jobs:
       - run:
           name: Locate site Packages
           command: python -c "import site; print(site.getsitepackages())"
+      - save_cache:
+          key: projectname-{{ .Branch }}
+          paths:
+            - "~/.cache/pip"
+            - "/usr/local/lib/python3.6/site-packages"
       - run:
           name: Run Tests
           command: python manage.py test
