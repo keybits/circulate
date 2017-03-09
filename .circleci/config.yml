@@ -1,1 +1,9 @@
 version: 2
+jobs:
+  build:
+    working_directory: ~/circulate
+    docker:
+      - image: python:3.6.0-alpine
+    steps:
+      - checkout
+      - run: echo "hello world"
