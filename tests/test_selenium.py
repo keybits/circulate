@@ -13,10 +13,10 @@ class SeleniumTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # start Chrome
-        try:
-            cls.client = webdriver.Chrome()
-        except:
-            pass
+        # try:
+        #     cls.client = webdriver.Chrome()
+        # except:
+        #     pass
 
         # skip these tests if the browser could not be started
         if cls.client:
