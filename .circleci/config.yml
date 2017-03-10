@@ -33,5 +33,5 @@ jobs:
           name: Run Tests
           command: python manage.py test
       - store_artifacts:
-          path: /test-reports
+          path: test-reports/
           destination: tr1
