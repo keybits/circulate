@@ -38,9 +38,7 @@ jobs:
       - store_test_results:
           path: test-reports/
       - run:
-        name: Setup Heroku
-        command: .circleci/setup-heroku.sh
-      - run:
-        name: Check
-        command: cat ~/.netrc
+          name: Setup Heroku
+          command: cd .circleci && ./setup-heroku.sh
+          command: cat ~/.netrc
 
