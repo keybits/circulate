@@ -9,7 +9,7 @@ from app.models import Role, User, Post
 
 class SeleniumTestCase(unittest.TestCase):
     client = None
-    
+
     @classmethod
     def setUpClass(cls):
         # start Chrome
