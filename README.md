@@ -43,6 +43,7 @@ python manage.py shell
 and run the following command to set up Roles:
 
 > Role.insert_roles()
+> User.add_self_follows()
 
 ## Tests
 
