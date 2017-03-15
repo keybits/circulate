@@ -29,9 +29,9 @@ jobs:
           paths:
             - "~/.cache/pip"
             - "/usr/local/lib/python3.6/site-packages"
-      - run:
-          name: Run Tests
-          command: python manage.py test
+      #- run:
+      #    name: Run Tests
+      #    command: python manage.py test
       - store_artifacts:
           path: test-reports/
           destination: tr1
@@ -39,7 +39,7 @@ jobs:
           path: test-reports/
       - run:
           name: setup Heroku
-          command: cd .circleci && chmod + x setup-heroku.sh && ./setup-heroku.sh
+          command: cd .circleci && chmod +x setup-heroku.sh && ./setup-heroku.sh
       - run:
           name: Check
           command: cat ~/.netrc
