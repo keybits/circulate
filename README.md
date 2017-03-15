@@ -29,21 +29,8 @@ The application uses Python and Flask for the backend.
 ```
 createdb circulate
 pip install -r requirements/dev.txt
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
+python manage.py deploy
 ```
-
-then:
-
-```
-python manage.py shell
-```
-
-and run the following command to set up Roles:
-
-> Role.insert_roles()
-> User.add_self_follows()
 
 ## Tests
 
