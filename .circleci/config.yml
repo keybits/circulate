@@ -37,8 +37,8 @@ jobs:
       - store_test_results:
           path: test-reports/
       - deploy:
- +        name: Deploy Master to Heroku
- +        command: |
- +          if [ "${CIRCLE_BRANCH}" == "master" ]; then
- +            git push heroku master && heroku run python manage.py deploy && heroku restart
- +          fi
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push heroku master && heroku run python manage.py deploy && heroku restart
+            fi
