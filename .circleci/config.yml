@@ -39,7 +39,7 @@ jobs:
           path: test-reports/
       - run:
           name: setup Heroku
-          command: cd .circleci && chmod +x setup-heroku.sh && ./setup-heroku.sh
+          command: bash .circleci/setup-heroku.sh
       - run:
           name: Check
           command: cat ~/.netrc
