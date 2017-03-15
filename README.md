@@ -37,7 +37,7 @@ python manage.py db upgrade
 then:
 
 ```
-python mange.py shell
+python manage.py shell
 ```
 
 and run the following command to set up Roles:
