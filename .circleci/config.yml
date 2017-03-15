@@ -36,6 +36,9 @@ jobs:
           destination: tr1
       - store_test_results:
           path: test-reports/
+      - add-ssh-keys:
+          fingerprints:
+            - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
       - deploy:
           name: Deploy Master to Heroku
           command: |
