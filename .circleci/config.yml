@@ -39,7 +39,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "48:a0:87:54:ca:75:32:12:c6:9e:a2:77:a4:7a:08:a4"
-      #- deploy:
+      - deploy:
+          name: Echo
+          command: echo "I would deploy here"
       #    name: Deploy Master to Heroku
       #    command: |
       #      if [ "${CIRCLE_BRANCH}" == "master" ]; then
