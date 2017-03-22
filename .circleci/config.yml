@@ -31,6 +31,22 @@ jobs:
       - run:
           name: Run Tests
           command: python manage.py test
+      - run:
+            name: trigger jobs
+            command: |
+              # this function will liekly get built in into the circleci cli 
+              function trigger_job() {
+                job_name=$1
+                curl -u ${CIRCLE_API_TOKEN}: \
+                  -d build_parameters[CIRCLE_JOB]=${job_name} \
+                  -d revision=$CIRCLE_SHA1 \
+                  https://circleci.com/api/v1.1/project/github/keybits/circulate/tree/$CIRCLE_BRANCH
+              }      
+              trigger_job build-python27
+              trigger_job build-python35
+              trigger_job build-python36
+
+
       - store_artifacts:
           path: test-reports/
           destination: tr1
@@ -49,3 +65,26 @@ jobs:
       #        heroku run python manage.py deploy
       #        heroku restart
       #      fi
+
+
+  # here are our jobs with different Ruby versions
+  build-python27:
+       docker:
+         - image: python:2.7.13 
+       working_directory: ~/circulate
+       steps:
+         - run: echo "hello python 2.7.13"
+  
+  build-python35:
+       docker:
+         - image: python:3.5.3 
+       working_directory: ~/circulate
+       steps:
+         - run: echo "hello python 3.5.3"
+  
+  build-python36:
+       docker:
+         - image: python:3.6.0
+       working_directory: ~/circulate
+       steps:
+         - run: echo "hello python 3.6.0"
