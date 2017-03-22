@@ -32,7 +32,7 @@ jobs:
           name: Run Tests
           command: python manage.py test
       - run:
-            name: trigger builds
+            name: trigger jobs
             command: |
               # this function will liekly get built in into the circleci cli 
               function trigger_job() {
