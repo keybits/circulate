@@ -39,6 +39,22 @@ python manage.py runserver
 
 You can now test the app locally with the Flask development server.
 
+## First run on Heroku
+
+```
+heroku create circulate
+heroku addons:create heroku-postgresql:hobby-dev
+set: heroku config:set FLASK_CONFIG=heroku
+git push heroku master
+heroku run python manage.py deploy
+heroku restart
+```
+
+Note: 
+
+- you need a local copy of migrations > versions > xxx.py that is pushed to heroku
+- take care to delete session cookies if changing between py 2 and 3!
+
 ## Tests
 
 The app runs various tests:
@@ -57,6 +73,7 @@ See the `tests` directory for details.
 
 ## TODO
 
+- cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to...
 - add parallelization
 - test with multiple python versions
 - run with coverage on CircleCI
