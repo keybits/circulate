@@ -43,10 +43,10 @@ jobs:
           name: Echo
           command: echo "I would deploy here"
       - deployment:
-        fake_deploy_for_cci2:
-          tag: /.*/
-          commands:
-            - echo make tags run in 2.0
+          fake_deploy_for_cci2:
+            tag: /.*/
+            commands:
+              - echo make tags run in 2.0
       #    name: Deploy Master to Heroku
       #    command: |
       #      if [ "${CIRCLE_BRANCH}" == "master" ]; then
