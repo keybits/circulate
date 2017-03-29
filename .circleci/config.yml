@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/circulate
+    working_directory: /root/circulate
     docker:
       - image: python:3.6.0
         environment:
@@ -26,7 +26,7 @@ jobs:
       - save_cache:
           key: projectname-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
           paths:
-            - "~/.cache/pip"
+            - "/root/.cache/pip"
             - "/usr/local/lib/python3.6/site-packages"
       - run:
           name: Run Tests
@@ -42,6 +42,11 @@ jobs:
       - deploy:
           name: Echo
           command: echo "I would deploy here"
+      - deployment:
+        fake_deploy_for_cci2:
+          tag: /.*/
+          commands:
+            - echo make tags run in 2.0
       #    name: Deploy Master to Heroku
       #    command: |
       #      if [ "${CIRCLE_BRANCH}" == "master" ]; then
