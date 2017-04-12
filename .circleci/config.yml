@@ -15,22 +15,27 @@ jobs:
       - image: selenium/standalone-chrome:3.1.0
     steps:
       - checkout
-      - restore_cache:
-          key: projectname-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
-      - run:
-          name: Install Dependencies
-          command: pip install -r requirements/dev.txt
+      - restore_cache: v1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+      - run: |
+         python3 -m venv ~/venv
+         . ~/venv/bin/activate
+         pip install requirements/dev.txt
+      - run: |
+        . ~/venv/bin/activate
+        make test
       - run:
           name: setup Heroku
           command: bash .circleci/setup-heroku.sh
       - save_cache:
-          key: projectname-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: v1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
           paths:
-            - "/root/.cache/pip"
-            - "/usr/local/lib/python3.6/site-packages"
+            - "~/.pip/cache"
+            - "~/venv"
       - run:
           name: Run Tests
-          command: python manage.py test
+          command: |
+              . ~/venv/bin/activate
+              python manage.py test
       - store_artifacts:
           path: test-reports/
           destination: tr1
