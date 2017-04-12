@@ -15,7 +15,8 @@ jobs:
       - image: selenium/standalone-chrome:3.1.0
     steps:
       - checkout
-      - restore_cache: v1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+      - restore_cache:
+          key: v1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run:
           command: |
             python3 -m venv ~/venv
