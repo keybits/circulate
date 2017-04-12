@@ -31,11 +31,9 @@ jobs:
           paths:
             - "~/.pip/cache"
             - "~/venv"
-      - run:
-          name: Run Tests
-          command: |
-              . ~/venv/bin/activate
-              python manage.py test
+      - run: |
+          . ~/venv/bin/activate
+          python manage.py test
       - store_artifacts:
           path: test-reports/
           destination: tr1
