@@ -73,7 +73,7 @@ See the `tests` directory for details.
 
 ## TODO
 
-- cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to...
+- cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to
 - add parallelization
 - test with multiple python versions
 - run with coverage on CircleCI
