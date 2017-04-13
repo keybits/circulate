@@ -32,8 +32,8 @@ jobs:
             - "~/venv"
       - run:
           command: |
-            . ~/venv/bin/activate
-            python /root/circulate/manage.py test
+            . venv/bin/activate
+            python manage.py test
       - store_artifacts:
           path: test-reports/
           destination: tr1
