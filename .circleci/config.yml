@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run:
           command: |
             python3 -m venv venv
@@ -26,10 +26,9 @@ jobs:
           name: setup Heroku
           command: bash .circleci/setup-heroku.sh
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
           paths:
-            - "~/.pip/cache"
-            - "~/venv"
+            - "venv"
       - run:
           command: |
             . venv/bin/activate
