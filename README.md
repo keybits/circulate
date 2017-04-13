@@ -73,7 +73,6 @@ See the `tests` directory for details.
 
 ## TODO
 
-- make sure caching works properly (see: https://github.com/circleci/circleci-docs/issues/917)
 - cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to...
 - add parallelization
 - test with multiple python versions
