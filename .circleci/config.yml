@@ -3,7 +3,7 @@ jobs:
   build:
     machine: true
     working_directory: /root/circulate
-    docker:
+    # docker:
       - image: python:3.6.0
         environment:
           FLASK_CONFIG: testing
