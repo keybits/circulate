@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     machine: true
-    # working_directory: /root/circulate
+    working_directory: circulate
     # docker:
     #  - image: python:3.6.0
     #    environment:
