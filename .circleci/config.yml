@@ -17,6 +17,7 @@ jobs:
       - checkout
       - restore_cache:
           key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+      - run: echo $CIRCLE_TAG
       - run:
           command: |
             python3 -m venv venv
