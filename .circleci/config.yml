@@ -2,6 +2,8 @@ version: 2
 jobs:
   build:
     working_directory: /root/circulate
+    environment:
+      - TAG: build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM}
     docker:
       - image: python:3.6.0
         environment:
