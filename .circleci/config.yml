@@ -15,7 +15,7 @@ jobs:
       - image: selenium/standalone-chrome:3.1.0
     steps:
       - checkout
-      - export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
+      - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
       - restore_cache:
           key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run: echo $CIRCLE_TAG
