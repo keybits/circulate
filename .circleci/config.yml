@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    working_directory: /root/circulate
     docker:
       - image: python:3.6.0
     steps:
