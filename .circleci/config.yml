@@ -20,7 +20,7 @@ jobs:
     steps:
       - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
       - restore_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run: echo $CIRCLE_TAG
       - run: echo $TAG
       - run:
@@ -32,7 +32,7 @@ jobs:
           name: setup Heroku
           command: bash .circleci/setup-heroku.sh
       - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
           paths:
             - "venv"
       - run:
