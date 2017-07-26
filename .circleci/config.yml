@@ -18,6 +18,7 @@ jobs:
           POSTGRES_PASSWORD: ""
       - image: selenium/standalone-chrome:3.1.0
     steps:
+      - checkout
       - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
       - restore_cache:
           key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
