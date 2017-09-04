@@ -49,6 +49,7 @@ jobs:
       - store_artifacts:
           path: test-reports/
           destination: tr1
+      - store_artifacts:
           path: selenium_log.txt
           destination: selenium
       - store_test_results:
