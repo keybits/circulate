@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
       - restore_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run: echo $CIRCLE_TAG
       - run: echo $TAG
       - run:
@@ -27,7 +27,7 @@ jobs:
           name: setup Heroku
           command: bash .circleci/setup-heroku.sh
       - save_cache:
-          key: deps2-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
+          key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
           paths:
             - "venv"
       - run:
@@ -45,13 +45,6 @@ jobs:
       - deploy:
           name: Echo
           command: echo "I would deploy here"
-
-deployment:
-  fake_deploy_for_cci2:
-    tag: /.*/
-    commands:
-      - echo "make tags run in 2.0"
-
       #    name: Deploy Master to Heroku
       #    command: |
       #      if [ "${CIRCLE_BRANCH}" == "master" ]; then
