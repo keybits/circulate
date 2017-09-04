@@ -14,7 +14,8 @@ class SeleniumTestCase(unittest.TestCase):
     def setUpClass(cls):
         # start Chrome
         try:
-            cls.client = webdriver.Chrome()
+            cls.client = webdriver.Chrome(service_args=["--verbose", "--log-path=chrome.log"])
+
         except:
             pass
 
