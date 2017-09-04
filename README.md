@@ -73,7 +73,7 @@ See the `tests` directory for details.
 
 ## TODO
 
-- test with Firefox and Geckodriver (different branch)
+- test with Firefox and Geckodriver (working with FirefoxNightly locally - see firefox-geckodriver-local branch)
 - test with Headless Chrome
 - cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to
 - add parallelization (different branch)
