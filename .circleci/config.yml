@@ -13,6 +13,7 @@ jobs:
           POSTGRES_PASSWORD: ""
     steps:
       - checkout
+      - run: mkdir test-reports
       - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
       - run:
           name: Download Selenium and geckodriver
@@ -23,7 +24,7 @@ jobs:
       - run:
           name: Start Selenium
           command: |
-            java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar -log selenium.log
+            java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar -log test-reports/selenium.log
           background: true
       - restore_cache:
           key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
@@ -45,16 +46,9 @@ jobs:
           command: |
             . venv/bin/activate
             python manage.py test
-      - run: mv selenium.log selenium_log.txt
       - store_artifacts:
           path: test-reports/
           destination: tr1
-      - store_artifacts:
-          path: selenium_log.txt
-          destination: selenium.log
-      - store_artifacts:
-          path: chrome.log
-          destination: chrome.log
       - store_test_results:
           path: test-reports/
       - add_ssh_keys:
