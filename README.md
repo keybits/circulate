@@ -73,8 +73,11 @@ See the `tests` directory for details.
 
 ## TODO
 
+- test with Firefox and Geckodriver (different branch)
+- test with Headless Chrome
 - cache heroku toolbelt installation on CircleCI - needs an 'if not' for the directory it's installed to
-- add parallelization
+- add parallelization (different branch)
+- add workflow examples (different branch)
 - test with multiple python versions
 - run with coverage on CircleCI
 - make email testing work on CircleCI with mailhog
