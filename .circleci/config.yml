@@ -54,7 +54,7 @@ jobs:
           destination: selenium.log
       - store_artifacts:
           path: chrome.log
-          destination: selenium.log
+          destination: chrome.log
       - store_test_results:
           path: test-reports/
       - add_ssh_keys:
