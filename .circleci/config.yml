@@ -14,6 +14,17 @@ jobs:
     steps:
       - checkout
       - run: export TAG=build-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} && echo $TAG
+      - run:
+        name: Download Selenium and geckodriver
+        command: |
+          curl -O http://selenium-release.storage.googleapis.com/3.0/selenium-server-standalone-3.0.1.jar
+          curl -L https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz | tar xz
+          chmod +x geckodriver
+      - run:
+        name: Start Selenium
+        command: |
+          java -jar -Dwebdriver.gecko.driver=./geckodriver selenium-server-standalone-3.0.1.jar -log selenium.log
+          background: true
       - restore_cache:
           key: deps3-{{ .Branch }}-{{ checksum "requirements/dev.txt" }}
       - run: echo $CIRCLE_TAG
@@ -34,9 +45,12 @@ jobs:
           command: |
             . venv/bin/activate
             python manage.py test
+      - run: mv selenium.log selenium_log.txt
       - store_artifacts:
           path: test-reports/
           destination: tr1
+          path: selenium_log.txt
+          destination: selenium
       - store_test_results:
           path: test-reports/
       - add_ssh_keys:
