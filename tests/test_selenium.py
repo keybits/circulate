@@ -3,6 +3,7 @@ import threading
 import time
 import unittest
 from selenium import webdriver
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from app import create_app, db
 from app.models import Role, User, Post
 
@@ -14,7 +15,8 @@ class SeleniumTestCase(unittest.TestCase):
     def setUpClass(cls):
         # start Chrome
         try:
-            cls.client = webdriver.Chrome()
+            binary = FirefoxBinary('/Applications/FirefoxNightly.app/Contents/MacOS/firefox-bin')
+            cls.client = webdriver.Firefox(firefox_binary=binary)
 
         except:
             pass
